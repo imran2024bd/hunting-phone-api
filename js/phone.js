@@ -9,6 +9,7 @@ const loadPhone = async() =>{
     displayPhones(phones);
 
 }
+
 loadPhone(); 
 
 
