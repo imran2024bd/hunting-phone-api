@@ -1,9 +1,9 @@
-// pg link : https://github.com/ProgrammingHero1/phone-hunter-api
+// pg hero link : https://github.com/ProgrammingHero1/phone-hunter-api
 
 
 // console.log('Hunting phone 02');
 
-const loadPhone = async(searchText , isShowAll) =>{
+const loadPhone = async(searchText='13' , isShowAll) =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     console.log(data);
@@ -13,12 +13,12 @@ const loadPhone = async(searchText , isShowAll) =>{
 
 }
 
-// loadPhone(searchText); 
+loadPhone(searchText='13'); 
 
 
 
 const displayPhones = (phones , isShowAll) =>{
-        console.log(phones);
+        // console.log(phones);
         // step- 01
         const phoneContainer = document.getElementById('phone-container');
         // clear phone container cards before adding new cards
@@ -32,7 +32,7 @@ const displayPhones = (phones , isShowAll) =>{
         else{
             showAllContainer.classList.add('hidden');
         }
-        console.log('is show all' , isShowAll);
+        // console.log('is show all' , isShowAll);
         // display or show first 10 values  if not show All
         // console.log(phones.length);
         if (!isShowAll) {
@@ -42,7 +42,7 @@ const displayPhones = (phones , isShowAll) =>{
 
 
         phones.forEach(phone =>{
-            console.log(phone);
+            // console.log(phone);
             // // step- 02 create a div
             const phoneCard = document.createElement('div');
             phoneCard.classList = `card p-4 bg-gray-100 shadow-xl`
@@ -106,13 +106,41 @@ const handleshowAll = () =>{
         handleSearch(true);
 }
 
-
 // show Details function
 const handleShowDetail = async (id) => {
-    console.log(' handle show details : ', id);
+    // console.log(' handle show details : ', id);
     // load single phone data
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
-    console.log(res);
+    // console.log(res);
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
+    const phone = data.data;
+    showPhoneDetails(phone);
 }
+
+// show phone details
+const showPhoneDetails = (phone) =>{
+    console.log(phone);
+    const phoneName = document.getElementById('show-detail-phone-name');
+    phoneName.innerText = phone.name;
+
+    const showDetailContainer = document.getElementById('show-detail-container');
+    showDetailContainer.innerHTML = `
+    <img src="${phone.image}" alt="">
+    <p><span>storage: </span>${phone?.mainFeatures?.storage}</p>
+    <p><span>Display Size: </span>${phone?.mainFeatures?.displaySize}</p>
+    <p><span>Chipset: </span>${phone?.mainFeatures?.chipSet}</p>
+    <p><span>memory: </span>${phone?.mainFeatures?.memory}</p>
+    <p><span>Slug: </span>${phone?.slug}</p>
+    <p><span>Release date: </span>${phone?.releaseDate}</p>
+    <p><span>Brand: </span>${phone?.brand}</p>
+    <p><span>gps: </span>${phone?.others. GPS}</p>
+    `
+    // show the modal
+    show_details_modal.showModal()
+
+}
+
+
+
+
