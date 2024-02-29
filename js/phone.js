@@ -110,6 +110,9 @@ const handleshowAll = () =>{
 // show Details function
 const handleShowDetail = async (id) => {
     console.log(' handle show details : ', id);
-    // load single data
-    const res = await fetch('https://openapi.programming-hero.com/api/phone/apple_iphone_13_pro_max-11089')
+    // load single phone data
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+    console.log(res);
+    const data = await res.json();
+    console.log(data);
 }

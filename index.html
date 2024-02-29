@@ -16,7 +16,8 @@
     <main class="container mx-auto mt-8">
         <section class="bg-gray-100 m-4 p-4">
             <div>
-                <input id="search-field" type="text" placeholder="Search" class="input input-bordered w-full max-w-xs" />
+                <input id="search-field" type="text" placeholder="Search"
+                    class="input input-bordered w-full max-w-xs" />
                 <button onclick="handleSearch()" class="btn btn-accent">Search</button>
             </div>
             <!-- Another search button -->
@@ -47,10 +48,26 @@
                 </div> -->
             </div>
             <!-- show all button -->
-            <div id="show-all-container" class="hidden text-center my-8" >
+            <div id="show-all-container" class="hidden text-center my-8">
                 <button onclick="handleshowAll()" id="" class="btn btn-primary">show All</button>
             </div>
         </section>
+        <!-- show Details Modal -->
+        <!-- Open the modal using ID.showModal() method -->
+        <button class="btn" onclick="show_details_modal.showModal()">open modal</button>
+        <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Hello!</h3>
+                <p class="py-4">Press ESC key or click the button below to close</p>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
     </main>
     <footer></footer>
 
