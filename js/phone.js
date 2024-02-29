@@ -54,8 +54,8 @@ const displayPhones = (phones , isShowAll) =>{
             <h1 class="card-title">Brand: ${phone. brand}</h1>
                 <h2 class="card-title">${phone.phone_name}</h2>
                 <p>Brand Properties: ${phone.slug}</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary text-center mx-auto">Buy Now</button>
+                <div class="card-actions justify-center">
+                    <button onclick="handleShowDetail('${phone.slug}')" class="btn btn-primary text-center mx-auto">Show Details</button>
                 </div>
             </div>
             `;
@@ -104,4 +104,12 @@ const toggleLoadingSpinner = (isloading) => {
 // handle show all
 const handleshowAll = () =>{
         handleSearch(true);
+}
+
+
+// show Details function
+const handleShowDetail = async (id) => {
+    console.log(' handle show details : ', id);
+    // load single data
+    const res = await fetch('https://openapi.programming-hero.com/api/phone/apple_iphone_13_pro_max-11089')
 }
