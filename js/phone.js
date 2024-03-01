@@ -135,6 +135,8 @@ const showPhoneDetails = (phone) =>{
     <p><span>Release date: </span>${phone?.releaseDate}</p>
     <p><span>Brand: </span>${phone?.brand}</p>
     <p><span>gps: </span>${phone?.others. GPS}</p>
+    <p><span>gps: </span>${phone.others?. GPS || 'No GPS available'}</p>
+    <p><span>gps: </span>${phone.others?. GPS ? phone.others.GPS:  'No GPS available in this device'}</p>
     `
     // show the modal
     show_details_modal.showModal()
